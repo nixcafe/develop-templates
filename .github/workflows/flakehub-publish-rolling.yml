@@ -20,3 +20,6 @@ jobs:
           rolling: true
           visibility: "public"
           include-output-paths: true
+          # include-submodules: true
+          # See: https://github.com/DeterminateSystems/flakehub-push/pull/182
+          

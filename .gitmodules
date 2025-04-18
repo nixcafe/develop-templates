@@ -1,0 +1,6 @@
+[submodule "templates/rust"]
+	path = templates/rust
+	url = https://github.com/nixcafe/develop-rust.git
+[submodule "templates/node"]
+	path = templates/node
+	url = https://github.com/nixcafe/develop-node.git

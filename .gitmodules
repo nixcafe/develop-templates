@@ -4,3 +4,12 @@
 [submodule "templates/node"]
 	path = templates/node
 	url = https://github.com/nixcafe/develop-node.git
+[submodule "templates/nix"]
+	path = templates/nix
+	url = https://github.com/nixcafe/develop-config.git
+[submodule "templates/nix-config"]
+	path = templates/nix-config
+	url = https://github.com/nixcafe/develop-nix-config.git
+[submodule "templates/secrets"]
+	path = templates/secrets
+	url = https://github.com/nixcafe/develop-my-secrets.git

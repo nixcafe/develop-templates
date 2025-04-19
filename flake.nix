@@ -22,8 +22,13 @@
       src = ./.;
 
       templates = {
-        rust.description = "Rust development environment";
+        nix.description = "Nix development environment";
+        nix-config.description = "NixOS configuration";
         node.description = "Node.js development environment";
+        rust.description = "Rust development environment";
+        secrets.description = "Secrets file management";
       };
+
+      defaultTemplate = inputs.self.templates.nix;
     };
 }

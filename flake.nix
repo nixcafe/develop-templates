@@ -1,5 +1,7 @@
 {
   inputs = {
+    # Submodules are supported in nix 2.27.0
+    self.submodules = true;
     # nixos-unstable (use flakehub to avoid github api limit)
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.*.tar.gz";
 

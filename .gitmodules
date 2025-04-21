@@ -16,3 +16,6 @@
 [submodule "templates/java"]
 	path = templates/java
 	url = https://github.com/nixcafe/develop-java.git
+[submodule "templates/kotlin"]
+	path = templates/kotlin
+	url = https://github.com/nixcafe/develop-kotlin.git

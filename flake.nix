@@ -25,6 +25,7 @@
 
       templates = {
         java.description = "Java development environment";
+        kotlin.description = "Kotlin development environment";
         nix.description = "Nix development environment";
         nix-config.description = "NixOS configuration";
         node.description = "Node.js development environment";

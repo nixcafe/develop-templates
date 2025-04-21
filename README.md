@@ -18,6 +18,8 @@ nix flake init -t beans#${develop_name} --refresh
 
 ## Templates
 
+- `java`: Java development environment
+- `kotlin`: Kotlin development environment
 - `nix`: Nix development environment
 - `nix-config`: NixOS configuration
 - `node`: Node.js development environment

@@ -13,3 +13,9 @@
 [submodule "templates/secrets"]
 	path = templates/secrets
 	url = https://github.com/nixcafe/develop-my-secrets.git
+[submodule "templates/java"]
+	path = templates/java
+	url = https://github.com/nixcafe/develop-java.git
+[submodule "templates/kotlin"]
+	path = templates/kotlin
+	url = https://github.com/nixcafe/develop-kotlin.git

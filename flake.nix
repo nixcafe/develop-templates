@@ -29,6 +29,7 @@
         nix.description = "Nix development environment";
         nix-config.description = "NixOS configuration";
         node.description = "Node.js development environment";
+        python.description = "Python development environment";
         rust.description = "Rust development environment";
         secrets.description = "Secrets file management";
       };

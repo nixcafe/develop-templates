@@ -23,6 +23,7 @@ nix flake init -t beans#${develop_name} --refresh
 - `nix`: Nix development environment
 - `nix-config`: NixOS configuration
 - `node`: Node.js development environment
+- `python`: Python development environment
 - `rust`: Rust development environment
 - `secrets`: Secrets file management
 

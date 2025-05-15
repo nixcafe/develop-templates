@@ -1,24 +1,24 @@
 [submodule "templates/rust"]
 	path = templates/rust
-	url = https://github.com/nixcafe/develop-rust.git
+	url = https://github.com/nixcafe-develop/rust.git
 [submodule "templates/node"]
 	path = templates/node
-	url = https://github.com/nixcafe/develop-node.git
+	url = https://github.com/nixcafe-develop/node.git
 [submodule "templates/nix"]
 	path = templates/nix
-	url = https://github.com/nixcafe/develop-config.git
+	url = https://github.com/nixcafe-develop/config.git
 [submodule "templates/nix-config"]
 	path = templates/nix-config
-	url = https://github.com/nixcafe/develop-nix-config.git
+	url = https://github.com/nixcafe-develop/nix-config.git
 [submodule "templates/secrets"]
 	path = templates/secrets
-	url = https://github.com/nixcafe/develop-my-secrets.git
+	url = https://github.com/nixcafe-develop/nix-secrets.git
 [submodule "templates/java"]
 	path = templates/java
-	url = https://github.com/nixcafe/develop-java.git
+	url = https://github.com/nixcafe-develop/java.git
 [submodule "templates/kotlin"]
 	path = templates/kotlin
-	url = https://github.com/nixcafe/develop-kotlin.git
+	url = https://github.com/nixcafe-develop/kotlin.git
 [submodule "templates/python"]
 	path = templates/python
 	url = https://github.com/nixcafe-develop/python.git

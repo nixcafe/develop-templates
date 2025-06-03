@@ -34,6 +34,7 @@ nix flake init -t beans#${develop_name}
 
 ## Available Templates
 
+- `colmena-config`: NixOS Configuration with Colmena Deployment
 - `java`: Java development environment with JDK and common build tools
 - `kotlin`: Kotlin development environment with Kotlin compiler and build tools
 - `nix`: Nix development environment with common Nix development tools

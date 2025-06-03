@@ -24,6 +24,7 @@
       src = ./.;
 
       templates = {
+        colmena-config.description = "NixOS Configuration with Colmena Deployment";
         java.description = "Java development environment";
         kotlin.description = "Kotlin development environment";
         nix.description = "Nix development environment";

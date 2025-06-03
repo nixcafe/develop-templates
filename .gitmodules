@@ -22,3 +22,6 @@
 [submodule "templates/python"]
 	path = templates/python
 	url = https://github.com/nixcafe-develop/python.git
+[submodule "templates/colmena-config"]
+	path = templates/colmena-config
+	url = https://github.com/nixcafe-develop/colmena-config.git

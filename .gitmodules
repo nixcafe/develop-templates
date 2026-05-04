@@ -6,7 +6,7 @@
 	url = https://github.com/nixcafe-develop/node.git
 [submodule "templates/nix"]
 	path = templates/nix
-	url = https://github.com/nixcafe-develop/config.git
+	url = https://github.com/nixcafe-develop/nix.git
 [submodule "templates/nix-config"]
 	path = templates/nix-config
 	url = https://github.com/nixcafe-develop/nix-config.git

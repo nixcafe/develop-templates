@@ -1,40 +1,57 @@
 {
   inputs = {
-    # Submodules are supported in nix 2.27.0
-    self.submodules = true;
     # nixos-unstable (use flakehub to avoid github api limit)
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.*.tar.gz";
-
-    snowfall-lib = {
-      url = "https://flakehub.com/f/snowfallorg/lib/*.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    purr.url = "https://flakehub.com/f/nixcafe/purr/0.1.*.tar.gz";
 
     # see: https://github.com/cachix/git-hooks.nix
     pre-commit-hooks = {
       url = "https://flakehub.com/f/cachix/git-hooks.nix/0.1.*.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    templates-colmena-config = {
+      url = "github:nixcafe-develop/colmena-config";
+      flake = false;
+    };
+    templates-java = {
+      url = "github:nixcafe-develop/java";
+      flake = false;
+    };
+    templates-kotlin = {
+      url = "github:nixcafe-develop/kotlin";
+      flake = false;
+    };
+    templates-nix = {
+      url = "github:nixcafe-develop/nix";
+      flake = false;
+    };
+    templates-nix-config = {
+      url = "github:nixcafe-develop/nix-config";
+      flake = false;
+    };
+    templates-node = {
+      url = "github:nixcafe-develop/node";
+      flake = false;
+    };
+    templates-python = {
+      url = "github:nixcafe-develop/python";
+      flake = false;
+    };
+    templates-rust = {
+      url = "github:nixcafe-develop/rust";
+      flake = false;
+    };
+    templates-secrets = {
+      url = "github:nixcafe-develop/nix-secrets";
+      flake = false;
+    };
   };
 
   outputs =
     inputs:
-    inputs.snowfall-lib.mkFlake {
+    inputs.purr.lib.mkFlake {
       inherit inputs;
       src = ./.;
-
-      templates = {
-        colmena-config.description = "NixOS Configuration with Colmena Deployment";
-        java.description = "Java development environment";
-        kotlin.description = "Kotlin development environment";
-        nix.description = "Nix development environment";
-        nix-config.description = "NixOS configuration";
-        node.description = "Node.js development environment";
-        python.description = "Python development environment";
-        rust.description = "Rust development environment";
-        secrets.description = "Secrets file management";
-      };
-
-      defaultTemplate = inputs.self.templates.nix;
     };
 }

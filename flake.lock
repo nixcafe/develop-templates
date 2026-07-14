@@ -16,6 +16,26 @@
         "type": "github"
       }
     },
+    "git-hooks": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1783008725,
+        "narHash": "sha256-jGiy6+sxjNWXSjp25uoJuNfyH9zBK1PEDY0lVoL4ibQ=",
+        "rev": "bca82caa46d5ec0f5d422c61fb1e30bc51313cbe",
+        "revCount": 1229,
+        "type": "tarball",
+        "url": "https://api.flakehub.com/f/pinned/cachix/git-hooks.nix/0.1.1229%2Brev-bca82caa46d5ec0f5d422c61fb1e30bc51313cbe/019f2403-9d83-7233-9d2e-dd8f3744dfbb/source.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://flakehub.com/f/cachix/git-hooks.nix/0.1.%2A.tar.gz"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1784007870,
@@ -45,37 +65,17 @@
         "type": "github"
       }
     },
-    "pre-commit-hooks": {
-      "inputs": {
-        "flake-compat": "flake-compat",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1783008725,
-        "narHash": "sha256-jGiy6+sxjNWXSjp25uoJuNfyH9zBK1PEDY0lVoL4ibQ=",
-        "rev": "bca82caa46d5ec0f5d422c61fb1e30bc51313cbe",
-        "revCount": 1229,
-        "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/cachix/git-hooks.nix/0.1.1229%2Brev-bca82caa46d5ec0f5d422c61fb1e30bc51313cbe/019f2403-9d83-7233-9d2e-dd8f3744dfbb/source.tar.gz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://flakehub.com/f/cachix/git-hooks.nix/0.1.%2A.tar.gz"
-      }
-    },
     "purr": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1784046112,
-        "narHash": "sha256-LvO9TvgKNdx1ssYPO8EUnbc1lpijrsJP14DmNJD9mwA=",
-        "rev": "1eb90b177b94556e09a7ad9102fe9abbea8becfc",
-        "revCount": 33,
+        "lastModified": 1784052756,
+        "narHash": "sha256-jUfiT0Vmu93XCCQyLfYS/nrtY47ge+0sq/q9zssivhA=",
+        "rev": "d92ced982bb710a8fbd9959bbeda15b76ed8289e",
+        "revCount": 37,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/nixcafe/purr/0.1.33%2Brev-1eb90b177b94556e09a7ad9102fe9abbea8becfc/019f6170-1723-7820-8967-fbd05dd69df2/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/nixcafe/purr/0.1.37%2Brev-d92ced982bb710a8fbd9959bbeda15b76ed8289e/019f61d5-8a16-71d0-903a-f302ede46db9/source.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -84,8 +84,8 @@
     },
     "root": {
       "inputs": {
+        "git-hooks": "git-hooks",
         "nixpkgs": "nixpkgs",
-        "pre-commit-hooks": "pre-commit-hooks",
         "purr": "purr",
         "templates-colmena-config": "templates-colmena-config",
         "templates-java": "templates-java",
@@ -181,11 +181,11 @@
     "templates-node": {
       "flake": false,
       "locked": {
-        "lastModified": 1753733395,
-        "narHash": "sha256-cA5eEqY6haQV+/Lqe0BqQUgUs+zLSyDXAHW1RWmpOVk=",
+        "lastModified": 1784056647,
+        "narHash": "sha256-8SPx5nOFLciD+h3HPR2nenS5ttgL7qcDdngB9iu/Hn4=",
         "owner": "nixcafe-develop",
         "repo": "node",
-        "rev": "e03fd872aca17d37ae96e35c28487e2c36e356ea",
+        "rev": "4786b896dd0ab72a8475c773659e86858a289df3",
         "type": "github"
       },
       "original": {

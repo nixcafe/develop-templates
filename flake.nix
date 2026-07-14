@@ -5,7 +5,7 @@
     purr.url = "https://flakehub.com/f/nixcafe/purr/0.1.*.tar.gz";
 
     # see: https://github.com/cachix/git-hooks.nix
-    pre-commit-hooks = {
+    git-hooks = {
       url = "https://flakehub.com/f/cachix/git-hooks.nix/0.1.*.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };

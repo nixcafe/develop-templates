@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  description = "Java development environment with JDK, Maven, and Gradle";
+  description = "Java development environment with GraalVM JDK, Maven, and Gradle";
   path = "${inputs.templates-java}";
   welcomeText = ''
     # Java Template

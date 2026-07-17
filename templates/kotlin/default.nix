@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  description = "Kotlin development environment with Kotlin compiler and Gradle";
+  description = "Kotlin development environment with GraalVM JDK, Kotlin compiler, and Gradle";
   path = "${inputs.templates-kotlin}";
   welcomeText = ''
     # Kotlin Template

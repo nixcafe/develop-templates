@@ -26,6 +26,8 @@ nix flake init -t beans#${template_name}
 | `rust` | Rust |
 | `java` | Java / JVM |
 | `kotlin` | Kotlin / JVM |
+| `latex` | LaTeX |
+| `typst` | Typst |
 | `nix-config` | NixOS config |
 | `colmena-config` | NixOS + Colmena |
 | `secrets` | Secrets (agenix) |

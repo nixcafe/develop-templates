@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  description = "Secrets file management";
+  description = "Encrypted secrets management with agenix/ragenix and YubiKey support";
   path = "${inputs.templates-secrets}";
   welcomeText = ''
     # Secrets Template

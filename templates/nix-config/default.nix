@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  description = "NixOS configuration";
+  description = "NixOS system configuration";
   path = "${inputs.templates-nix-config}";
   welcomeText = ''
     # NixOS Configuration Template

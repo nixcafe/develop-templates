@@ -22,6 +22,10 @@
       url = "github:nixcafe-develop/kotlin";
       flake = false;
     };
+    templates-latex = {
+      url = "github:nixcafe-develop/latex";
+      flake = false;
+    };
     templates-nix = {
       url = "github:nixcafe-develop/nix";
       flake = false;
@@ -40,6 +44,10 @@
     };
     templates-rust = {
       url = "github:nixcafe-develop/rust";
+      flake = false;
+    };
+    templates-typst = {
+      url = "github:nixcafe-develop/typst";
       flake = false;
     };
     templates-secrets = {

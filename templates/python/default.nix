@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  description = "Python development environment";
+  description = "Python development environment with pip, venv, and uv";
   path = "${inputs.templates-python}";
   welcomeText = ''
     # Python Template

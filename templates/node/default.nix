@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  description = "Node.js development environment";
+  description = "Node.js development environment with npm, yarn, pnpm, and corepack";
   path = "${inputs.templates-node}";
   welcomeText = ''
     # Node.js Template

@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  description = "Rust development environment";
+  description = "Rust development environment with cargo, rustc, rustfmt, clippy, and rust-analyzer";
   path = "${inputs.templates-rust}";
   welcomeText = ''
     # Rust Template

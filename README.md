@@ -18,17 +18,17 @@ nix registry add beans "github:nixcafe/develop-templates"
 nix flake init -t beans#${template_name}
 ```
 
-| Template | Language |
+| Template | Language / Use Case |
 |---|---|
 | `nix` (default) | Nix |
-| `node` | Node.js / TS |
+| `node` | Node.js / JavaScript / TypeScript |
 | `python` | Python |
 | `rust` | Rust |
 | `java` | Java / JVM |
 | `kotlin` | Kotlin / JVM |
 | `nix-config` | NixOS config |
 | `colmena-config` | NixOS + Colmena |
-| `secrets` | Secrets (agenix/sops) |
+| `secrets` | Secrets (agenix) |
 
 ## Development
 

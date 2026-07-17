@@ -1,6 +1,6 @@
 # develop-templates
 
-> Nix flake templates for reproducible development environments — bootstrap Node.js, Python, Rust, Java, Kotlin, NixOS configs, and more with a single command.
+> Nix flake templates for reproducible development environments — bootstrap Node.js, Python, Rust, Java, Kotlin, LaTeX, Typst, NixOS configs, and more with a single command.
 
 A curated collection of [Nix flake](https://nixos.wiki/wiki/Flakes) project templates. Bootstrap reproducible development environments for any programming language with `nix flake init -t`. Drop-in replacements for language-specific version managers — powered by Nix, no Docker, no manual toolchain setup.
 

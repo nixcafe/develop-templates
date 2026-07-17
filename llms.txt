@@ -1,0 +1,8 @@
+# develop-templates
+
+develop-templates - Nix flake templates for reproducible development environments
+
+- [develop-templates](/index): Nix flake templates for reproducible development environments
+- [Quick Start](/quick-start): Get started with develop-templates
+- [Available Templates](/templates): Full list of Nix development templates
+- [Contributing](/contributing): How to contribute new templates

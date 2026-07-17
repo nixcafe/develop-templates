@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://templates.nixcafe.org/sitemap.xml

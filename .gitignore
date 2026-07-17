@@ -1,5 +1,0 @@
-.direnv/
-.DS_Store
-result-*
-result
-/.pre-commit-config.yaml

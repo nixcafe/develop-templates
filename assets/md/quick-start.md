@@ -25,8 +25,32 @@ nix flake init -t beans#${template_name}
 
 ## Default Template
 
-The default template is `nix` — a Nix development shell with formatting, linting, and dead code detection tools. Used when no template is specified.
+The default template is `nix` — a Nix development shell with formatting, linting, and dead code detection tools. Used when no template is specified:
 
 ```bash
 nix flake init -t beans
+```
+
+## After Initialization
+
+```bash
+nix develop    # Enter the development shell
+```
+
+The `nix develop` command drops you into a fully provisioned dev environment with all tools, dependencies, and pre-commit hooks configured.
+
+## Registry Shortcuts
+
+We recommend registering the alias once:
+
+```bash
+nix registry add beans "github:nixcafe/develop-templates"
+```
+
+This allows shorter commands:
+
+```bash
+nix flake init -t beans#rust
+nix flake init -t beans#python
+nix flake init -t beans#node
 ```

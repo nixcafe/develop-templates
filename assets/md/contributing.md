@@ -12,6 +12,12 @@ nix develop
 
 The dev shell provides `nixfmt`, `deadnix`, and `statix` with [git-hooks](https://github.com/cachix/git-hooks.nix) enabled. Formatting and linting run automatically on every commit.
 
+Run checks manually:
+
+```bash
+nix flake check
+```
+
 ## Creating a Feature Branch
 
 ```bash
@@ -20,7 +26,8 @@ git checkout -b feat/my-new-template
 
 ## Adding a New Nix Template
 
-1. Create a repository under [nixcafe-develop](https://github.com/nixcafe-develop) with your template files (a standard `flake.nix` + `flake.lock`)
+1. Create a repository under [nixcafe-develop](https://github.com/nixcafe-develop) with your template files (a standard `flake.nix` + `flake.lock` + any project files)
+
 2. Add the repository as a flake input in `flake.nix`:
 
 ```nix
@@ -44,13 +51,13 @@ templates-<name> = {
 }
 ```
 
-4. Run git-hooks checks manually if needed:
+4. Run checks:
 
 ```bash
 nix flake check
 ```
 
-5. Open a pull request to the `main` branch. All PRs require at least one approving review and must pass CI checks before merging.
+5. Open a pull request to the `main` branch.
 
 ## CI/CD (GitHub Actions)
 
@@ -71,3 +78,10 @@ The `main` branch is protected:
 * Stale reviews are dismissed when new commits are pushed
 
 All development happens on feature branches and is merged to `main` via pull requests.
+
+## Code Style
+
+* Nix: follow `nixfmt` output
+* No unused bindings (`deadnix`)
+* `statix` lint warnings must be clean
+* `{ ... }:` empty patterns should use `_:` instead (except where the spread is intentional)

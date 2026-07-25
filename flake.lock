@@ -38,12 +38,12 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1784120854,
-        "narHash": "sha256-KesHgItiZPgGX740axSiQLcIQ8D24MDqNpkKYWIek8k=",
-        "rev": "753cc8a3a87467296ddd1fa93f0cc3e81120ee46",
-        "revCount": 1035164,
+        "lastModified": 1784796856,
+        "narHash": "sha256-wWFrV5/Qbm+lyt5x20E/bSbfJiGKMo4RCxZV8cl/WZI=",
+        "rev": "e2587caef70cea85dd97d7daab492899902dbf5d",
+        "revCount": 1040357,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/NixOS/nixpkgs/0.1.1035164%2Brev-753cc8a3a87467296ddd1fa93f0cc3e81120ee46/019f69c8-2fec-7903-bec1-68b3c985d626/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/NixOS/nixpkgs/0.1.1040357%2Brev-e2587caef70cea85dd97d7daab492899902dbf5d/019f922f-0a2e-7171-b290-1559042ab482/source.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -52,11 +52,11 @@
     },
     "nixpkgs-lib": {
       "locked": {
-        "lastModified": 1783821755,
-        "narHash": "sha256-eMPX9S6MKPyUnaOgeRfrG7OKUiAlc1AlcRinMbSB0WA=",
+        "lastModified": 1784426460,
+        "narHash": "sha256-DFY3+18Zijt5odIlo/G2gn1cXbU9rVim01NG1zHbpxs=",
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
-        "rev": "228ab8523d81526e57a6ca342e1a919fb6d246a8",
+        "rev": "e978bdeeff2de8eb5454396f6557e655845b32c7",
         "type": "github"
       },
       "original": {
@@ -70,16 +70,17 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1784315558,
-        "narHash": "sha256-0QpTqh3aRApdN27hdWgS9k0+5/jD2Ets8HRBALq0fzM=",
-        "rev": "98dde42e51c547ba02cff230aadfd028e73fc831",
-        "revCount": 39,
-        "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/nixcafe/purr/0.1.39%2Brev-98dde42e51c547ba02cff230aadfd028e73fc831/019f717f-7822-72a1-bd8e-765177abd006/source.tar.gz"
+        "lastModified": 1784966516,
+        "narHash": "sha256-h2o6+XuIhb5UboXkd6lzpQ+Wv5k7hCa7mLQ0tCp1quA=",
+        "owner": "nixcafe",
+        "repo": "purr",
+        "rev": "923295a2a45b0af4bfdaa5aadeda42fc4830fe1d",
+        "type": "github"
       },
       "original": {
-        "type": "tarball",
-        "url": "https://flakehub.com/f/nixcafe/purr/0.1.%2A.tar.gz"
+        "owner": "nixcafe",
+        "repo": "purr",
+        "type": "github"
       }
     },
     "root": {

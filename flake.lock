@@ -70,12 +70,12 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1784979262,
-        "narHash": "sha256-Dn3TppyNgmIEku1hML4me7aNbqlwN7RD+UiYk5zL7rw=",
-        "rev": "23b2550f26e098a51178f3409a2bb52e22d945cb",
-        "revCount": 82,
+        "lastModified": 1784980755,
+        "narHash": "sha256-aJWGno8mNltAeI2RDyZ03sMuXyKv6AkrEPEBo0i6p6w=",
+        "rev": "0807a12090b5bbe131cb269e3261c5f0475bbad2",
+        "revCount": 83,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/nixcafe/purr/0.1.82%2Brev-23b2550f26e098a51178f3409a2bb52e22d945cb/019f990f-0313-76c0-a834-3b876e6ef8e4/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/nixcafe/purr/0.1.83%2Brev-0807a12090b5bbe131cb269e3261c5f0475bbad2/019f9925-b743-7ac3-81b0-009f0b6288a4/source.tar.gz"
       },
       "original": {
         "type": "tarball",

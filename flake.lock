@@ -70,17 +70,16 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1784966516,
-        "narHash": "sha256-h2o6+XuIhb5UboXkd6lzpQ+Wv5k7hCa7mLQ0tCp1quA=",
-        "owner": "nixcafe",
-        "repo": "purr",
-        "rev": "923295a2a45b0af4bfdaa5aadeda42fc4830fe1d",
-        "type": "github"
+        "lastModified": 1784979262,
+        "narHash": "sha256-Dn3TppyNgmIEku1hML4me7aNbqlwN7RD+UiYk5zL7rw=",
+        "rev": "23b2550f26e098a51178f3409a2bb52e22d945cb",
+        "revCount": 82,
+        "type": "tarball",
+        "url": "https://api.flakehub.com/f/pinned/nixcafe/purr/0.1.82%2Brev-23b2550f26e098a51178f3409a2bb52e22d945cb/019f990f-0313-76c0-a834-3b876e6ef8e4/source.tar.gz"
       },
       "original": {
-        "owner": "nixcafe",
-        "repo": "purr",
-        "type": "github"
+        "type": "tarball",
+        "url": "https://flakehub.com/f/nixcafe/purr/0.1.%2A.tar.gz"
       }
     },
     "root": {

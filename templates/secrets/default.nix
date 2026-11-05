@@ -5,6 +5,6 @@
   welcomeText = ''
     # Secrets Template
     Run `nix develop` to enter the dev shell.
-    Run `nix run .#update` to update secrets.
+    Run `nix run .#update-secrets` to update secrets.
   '';
 }

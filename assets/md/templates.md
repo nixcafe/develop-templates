@@ -12,9 +12,9 @@
 | `kotlin` | Kotlin / JVM | Kotlin development environment with GraalVM JDK, Kotlin compiler, and Gradle |
 | `latex` | LaTeX | LaTeX document authoring environment with Nix formatters and pre-commit hooks |
 | `typst` | Typst | Typst document authoring environment with Nix formatters and pre-commit hooks |
-| `nix-config` | NixOS / macOS | NixOS, nix-darwin, and home-manager configuration with auto-discovered systems |
-| `colmena-config` | NixOS Deployment | NixOS Configuration with [Colmena](https://github.com/zhaofengli/colmena) deployment and ISO/image builds |
-| `secrets` | Secrets Management | Encrypted secrets management with agenix/ragenix and YubiKey support |
+| `nix-config` | NixOS / macOS | NixOS, nix-darwin, and home-manager configuration with auto-discovered systems and image recipes via `meta.nix` |
+| `colmena-config` | NixOS Deployment | NixOS Configuration with [Colmena](https://github.com/zhaofengli/colmena) deployment and image recipes via `meta.nix` |
+| `secrets` | Secrets Management | Encrypted secrets management with ragenix (agenix-compatible) and YubiKey support |
 | `purr` | purr Framework | purr project template using mkFlake (standalone) |
 | `purr-flake-parts` | purr + flake-parts | purr project template with flake-parts integration |
 

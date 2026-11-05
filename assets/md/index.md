@@ -31,9 +31,9 @@ That's it — no Docker, no manual toolchain setup, no version managers.
 | `kotlin` | Kotlin | GraalVM JDK, Kotlin compiler, Gradle |
 | `latex` | LaTeX | LaTeX with Nix formatters |
 | `typst` | Typst | Typst with Nix formatters |
-| `nix-config` | NixOS / macOS | NixOS, nix-darwin, home-manager |
-| `colmena-config` | NixOS + Colmena | NixOS with Colmena deployment |
-| `secrets` | Secrets | agenix/ragenix with YubiKey |
+| `nix-config` | NixOS / macOS | NixOS, nix-darwin, home-manager, image recipes |
+| `colmena-config` | NixOS + Colmena | NixOS with Colmena deployment and image recipes |
+| `secrets` | Secrets | ragenix (agenix-compatible) with YubiKey |
 | `purr` | purr Framework | purr project (mkFlake) |
 | `purr-flake-parts` | purr + flake-parts | purr with flake-parts |
 

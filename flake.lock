@@ -247,11 +247,11 @@
     "templates-secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1794328643,
-        "narHash": "sha256-ZG2c+LXJgKqwd9YDQDuao5xQmm0X9y46wnMso/KO3Z4=",
+        "lastModified": 1794328995,
+        "narHash": "sha256-31DEDW6EBb10t06ovPFM92UyXPpG9P2iozxKp66RbPQ=",
         "owner": "nixcafe-develop",
         "repo": "nix-secrets",
-        "rev": "8082c85e50e0a0c999f7181bdaa7915930074b82",
+        "rev": "378d6f60fa999557a3aacdf45e360219d1703142",
         "type": "github"
       },
       "original": {

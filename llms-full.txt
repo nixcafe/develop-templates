@@ -12,155 +12,161 @@ Sitemap:
 
 # develop-templates
 
-Curated [Nix flake](https://nixos.wiki/wiki/Flakes) project templates — **bootstrap reproducible development environments with a single command.**
+`develop-templates` is a collection of [Nix flake](https://nixos.wiki/wiki/Flakes) templates for development environments. Each template provides a `flake.nix` and the project files needed to start work in an empty directory.
+
+The flake is published on [FlakeHub](https://flakehub.com/flake/nixcafe/develop-templates).
 
 ## Quick Start
 
 ```bash
-# Register the alias (once)
+# Register an alias (optional)
 nix registry add beans "github:nixcafe/develop-templates"
 
-# Bootstrap a project
+# Initialize a template
 nix flake init -t beans#node
-nix flake init -t beans#python
-nix flake init -t beans#rust
 
-# Enter the dev shell
+# Enter the development shell
 nix develop
 ```
 
-That's it — no Docker, no manual toolchain setup, no version managers.
+Without the alias:
+
+```bash
+nix flake init -t "github:nixcafe/develop-templates#node" --refresh
+```
+
+Replace `node` with any template name from the table below.
 
 ## Available Templates
 
-| Template | Stack | What's included |
+| Template | Language or use case | Contents |
 |---|---|---|
-| `nix` *(default)* | Nix | nixfmt, deadnix, statix — Nix dev shell with formatting & linting |
-| `node` | Node.js / Bun / Deno | Node.js, Bun, Deno, ni |
-| `python` | Python | Python auto-configured, ruff, hatchling |
-| `rust` | Rust | cargo, rustc, clippy, rustfmt, rust-analyzer |
-| `java` | Java | GraalVM JDK, Maven, Gradle |
-| `kotlin` | Kotlin | GraalVM JDK, Kotlin compiler, Gradle |
-| `latex` | LaTeX | LaTeX with Nix formatters |
-| `typst` | Typst | Typst with Nix formatters |
-| `nix-config` | NixOS / macOS | NixOS, nix-darwin, home-manager, image recipes |
-| `colmena-config` | NixOS + Colmena | NixOS with Colmena deployment and image recipes |
-| `secrets` | Secrets | ragenix (agenix-compatible) with YubiKey |
-| `purr` | purr Framework | purr project (mkFlake) |
-| `purr-flake-parts` | purr + flake-parts | purr with flake-parts |
+| `nix` | Nix | `nixfmt`, `deadnix`, `statix` |
+| `node` | Node.js | Node.js, Bun, Deno, `ni`, `corepack` |
+| `python` | Python | Python version from `requires-python`, `ruff`, `hatchling` |
+| `rust` | Rust | `cargo`, `rustc`, `clippy`, `rustfmt`, `pkg-config`, `RUST_SRC_PATH` for rust-analyzer |
+| `java` | Java | GraalVM CE JDK, Maven, Gradle |
+| `kotlin` | Kotlin | GraalVM CE JDK, Kotlin compiler, Gradle |
+| `latex` | LaTeX | TeX Live, `latexmk`, `texlab`, `nixfmt`, `deadnix`, `statix` |
+| `typst` | Typst | Typst, `tinymist`, `nixfmt`, `deadnix`, `statix` |
+| `nix-config` | NixOS and macOS | NixOS, nix-darwin, home-manager, cattery-modules, image recipes via `meta.nix` |
+| `colmena-config` | NixOS deployment | NixOS, Colmena, cattery-modules, image recipes via `meta.nix` |
+| `secrets` | Secrets management | ragenix, age, `age-plugin-yubikey`, `nixfmt`, `deadnix`, `statix` |
+| `purr` | purr | Standalone purr project using `mkFlake` |
+| `purr-flake-parts` | purr with flake-parts | purr project using flake-parts |
 
-See the [Available Templates](/templates) page for descriptions and usage examples for every template.
+See the [Available Templates](/templates) page for usage examples and details about how the templates are built.
 
-## Why Nix Flake Templates?
+## Repository layout
 
-* **Reproducible** — identical environments across Linux, macOS, and WSL
-* **No Docker overhead** — native Nix builds, no container runtime
-* **Declarative** — tools, dependencies, and env vars in one `flake.nix`
-* **Zero-install bootstrap** — `nix flake init -t` + `nix develop`
-* **Polyglot** — one toolchain for all programming languages
-* **CI-friendly** — same environment locally and in CI
-
-## Architecture
-
-Each template is a thin wrapper pulling content from a dedicated repository under [nixcafe-develop](https://github.com/nixcafe-develop):
+Most templates are wrappers around a repository under [nixcafe-develop](https://github.com/nixcafe-develop). Each wrapper sets `description`, `path`, and `welcomeText`:
 
 ```nix
 # templates/node/default.nix
 { inputs, ... }:
 {
-  description = "Node.js development environment";
+  description = "Node.js development environment with Node.js, Bun, Deno, and ni";
   path = "${inputs.templates-node}";
   welcomeText = ''
-    # Node.js — Nix Development Environment
+    # Node.js Template
     Run `nix develop` to enter the dev shell.
   '';
 }
 ```
 
-The template flake itself is built with [purr](https://github.com/nixcafe/purr) — directory convention, auto-discovery, zero boilerplate.
+For these templates, `path` points at a `templates-*` input in the root `flake.nix`. The input is declared with `flake = false`, so the template repository is fetched as plain source rather than as a flake.
 
-See the [Quick Start](/quick-start) page for detailed setup instructions, and [Contributing](/contributing) to add your own template.
+The `purr` and `purr-flake-parts` templates work differently. Their `path` values point at `inputs.purr/template/default` and `inputs.purr/template/flake-parts`, so they use the `purr` flake input and have no separate template input.
+
+The root `flake.nix` has 14 inputs: `nixpkgs`, `purr`, `git-hooks`, and 11 `templates-*` inputs. It calls `inputs.purr.lib.mkFlake` with `src = ./.`, and purr discovers the `templates/`, `shells/`, and `checks/` directories:
+
+```text
+flake.nix
+flake.lock
+templates/<name>/default.nix
+shells/default/default.nix
+checks/git-hooks/default.nix
+```
+
+See [Quick Start](/quick-start) for setup instructions and [Contributing](/contributing) for the process of adding a template.
 
 # Quick Start
 
-## nix flake init (direct)
+Run `nix flake init` in an empty directory. The template name is the directory name under `templates/` in the `develop-templates` repository.
+
+## Direct flake reference
 
 ```bash
-nix flake init -t "github:nixcafe/develop-templates#${template_name}" --refresh
+nix flake init -t "github:nixcafe/develop-templates#node" --refresh
 ```
 
-## nix registry (recommended)
+Replace `node` with another template name. The `--refresh` flag makes Nix fetch the latest revision of the repository.
 
-Add to your [Nix registry](https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-registry) for shorter commands:
+## Registry alias
+
+Register the repository once in your [Nix registry](https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-registry) to use a shorter reference:
 
 ```bash
 nix registry add beans "github:nixcafe/develop-templates"
-nix flake init -t beans#${template_name}
-```
-
-## With Cattery Modules
-
-If you use [cattery-modules](https://github.com/nixcafe/cattery-modules) for NixOS deployment, the templates are pre-registered:
-
-```bash
-nix flake init -t beans#${template_name}
-```
-
-## Default Template
-
-The default template is `nix` — a Nix development shell with formatting, linting, and dead code detection tools. Used when no template is specified:
-
-```bash
-nix flake init -t beans
-```
-
-## After Initialization
-
-```bash
-nix develop    # Enter the development shell
-```
-
-The `nix develop` command drops you into a fully provisioned dev environment with all tools, dependencies, and pre-commit hooks configured.
-
-## Registry Shortcuts
-
-We recommend registering the alias once:
-
-```bash
-nix registry add beans "github:nixcafe/develop-templates"
-```
-
-This allows shorter commands:
-
-```bash
-nix flake init -t beans#rust
-nix flake init -t beans#python
 nix flake init -t beans#node
+```
+
+After registration, `beans#<name>` can be used anywhere the full `github:nixcafe/develop-templates#<name>` reference is accepted.
+
+## With cattery-modules
+
+If you use [cattery-modules](https://github.com/nixcafe/cattery-modules) and enable its shared Nix module, it registers `beans` in the Nix registry. You can skip `nix registry add` and run:
+
+```bash
+nix flake init -t beans#node
+```
+
+## After initialization
+
+```bash
+nix develop
+```
+
+This starts a shell with the tools listed in the [template table](/templates). Most templates also include a `.envrc`, so `direnv allow` works if direnv is installed.
+
+## Template names
+
+The available names are `nix`, `node`, `python`, `rust`, `java`, `kotlin`, `latex`, `typst`, `nix-config`, `colmena-config`, `secrets`, `purr`, and `purr-flake-parts`.
+
+The flake does not define a `default` template, so `nix flake init -t beans` fails. Pass a name explicitly:
+
+```bash
+nix flake init -t beans#nix
 ```
 
 # Available Templates
 
+The `templates/` directory contains 13 templates. The directory name is the template name passed to `nix flake init -t`.
+
 ## All Templates
 
-| Template | Language / Use Case | Description |
+| Template | Language or use case | Description |
 |---|---|---|
-| `nix` | Nix | Nix development environment with nixfmt, deadnix, and statix (default template) |
-| `node` | Node.js / JavaScript / TypeScript | Node.js development environment with Node.js, Bun, Deno, and ni |
-| `python` | Python | Python development environment with auto-configured Python version, ruff, and hatchling |
-| `rust` | Rust | Rust development environment with cargo, rustc, clippy, rustfmt, and rust-analyzer source resolution |
-| `java` | Java / JVM | Java development environment with GraalVM JDK, Maven, and Gradle |
-| `kotlin` | Kotlin / JVM | Kotlin development environment with GraalVM JDK, Kotlin compiler, and Gradle |
-| `latex` | LaTeX | LaTeX document authoring environment with Nix formatters and pre-commit hooks |
-| `typst` | Typst | Typst document authoring environment with Nix formatters and pre-commit hooks |
-| `nix-config` | NixOS / macOS | NixOS, nix-darwin, and home-manager configuration with auto-discovered systems and image recipes via `meta.nix` |
-| `colmena-config` | NixOS Deployment | NixOS Configuration with [Colmena](https://github.com/zhaofengli/colmena) deployment and image recipes via `meta.nix` |
-| `secrets` | Secrets Management | Encrypted secrets management with ragenix (agenix-compatible) and YubiKey support |
-| `purr` | purr Framework | purr project template using mkFlake (standalone) |
-| `purr-flake-parts` | purr + flake-parts | purr project template with flake-parts integration |
+| `nix` | Nix | Nix development environment with `nixfmt`, `deadnix`, and `statix` |
+| `node` | Node.js, JavaScript, TypeScript | Node.js development environment with Node.js, Bun, Deno, `ni`, and `corepack` |
+| `python` | Python | Python development environment with a Python version selected from `requires-python`, `ruff`, and `hatchling` |
+| `rust` | Rust | Rust development environment with `cargo`, `rustc`, `clippy`, `rustfmt`, `pkg-config`, and `RUST_SRC_PATH` for rust-analyzer |
+| `java` | Java, JVM | Java development environment with GraalVM CE JDK, Maven, and Gradle |
+| `kotlin` | Kotlin, JVM | Kotlin development environment with GraalVM CE JDK, the Kotlin compiler, and Gradle |
+| `latex` | LaTeX | LaTeX environment with TeX Live, `latexmk`, `texlab`, `nixfmt`, `deadnix`, and `statix` |
+| `typst` | Typst | Typst environment with Typst, `tinymist`, `nixfmt`, `deadnix`, and `statix` |
+| `nix-config` | NixOS, macOS | NixOS, nix-darwin, and home-manager configuration with cattery-modules and image recipes declared in host `meta.nix` files |
+| `colmena-config` | NixOS deployment | NixOS configuration with [Colmena](https://github.com/zhaofengli/colmena) deployment, cattery-modules, and image recipes declared in host `meta.nix` files |
+| `secrets` | Secrets management | Encrypted secrets with ragenix (agenix-compatible), age, and `age-plugin-yubikey` |
+| `purr` | purr | Standalone purr project using `mkFlake` |
+| `purr-flake-parts` | purr with flake-parts | purr project using flake-parts |
 
 ## Usage Examples
 
 ```bash
+# Nix
+nix flake init -t beans#nix
+
 # Node.js
 nix flake init -t beans#node
 
@@ -182,13 +188,10 @@ nix flake init -t beans#latex
 # Typst
 nix flake init -t beans#typst
 
-# Nix dev
-nix flake init -t beans#nix
-
-# NixOS config
+# NixOS configuration
 nix flake init -t beans#nix-config
 
-# Colmena config
+# Colmena configuration
 nix flake init -t beans#colmena-config
 
 # Secrets
@@ -197,32 +200,44 @@ nix flake init -t beans#secrets
 # purr project
 nix flake init -t beans#purr
 
-# purr + flake-parts
+# purr with flake-parts
 nix flake init -t beans#purr-flake-parts
+```
+
+If `beans` is not registered, use the full reference:
+
+```bash
+nix flake init -t "github:nixcafe/develop-templates#rust" --refresh
 ```
 
 ## How Templates Work
 
-Each template is defined as a thin `default.nix` wrapper:
+Each template is a `default.nix` file under `templates/<name>/`:
 
 ```nix
 # templates/node/default.nix
 { inputs, ... }:
 {
-  description = "Node.js development environment";
+  description = "Node.js development environment with Node.js, Bun, Deno, and ni";
   path = "${inputs.templates-node}";
   welcomeText = ''
-    # Node.js — Nix Development Environment
+    # Node.js Template
     Run `nix develop` to enter the dev shell.
   '';
 }
 ```
 
-The template content lives in a separate repository under [nixcafe-develop](https://github.com/nixcafe-develop) and is pulled in as a flake input (`flake = false`). This keeps the templates flake lightweight while allowing each template to evolve independently.
+`path` points at the source that `nix flake init` copies.
+
+For most templates, `path` references a `templates-*` input in the root `flake.nix`. These inputs use `github:nixcafe-develop/<repository>` with `flake = false`. The `templates-secrets` input points at `github:nixcafe-develop/nix-secrets`.
+
+The `purr` and `purr-flake-parts` templates do not use a `templates-*` input. They reference `inputs.purr/template/default` and `inputs.purr/template/flake-parts`.
+
+The root `flake.nix` uses `inputs.purr.lib.mkFlake` with `src = ./.`. purr scans `templates/` and exposes each `default.nix` as `templates.<name>`. It also discovers the dev shells in `shells/` and the git hooks check in `checks/`.
 
 # Contributing
 
-This project follows [GitHub Flow](https://docs.github.com/en/get-started/using-github/github-flow). All contributions must be made via pull requests against the `main` branch.
+This project follows [GitHub Flow](https://docs.github.com/en/get-started/using-github/github-flow). Make changes on a feature branch and open a pull request against the `main` branch.
 
 ## Development Shell
 
@@ -232,9 +247,9 @@ cd develop-templates
 nix develop
 ```
 
-The dev shell provides `nixfmt`, `deadnix`, and `statix` with [git-hooks](https://github.com/cachix/git-hooks.nix) enabled. Formatting and linting run automatically on every commit.
+The dev shell provides `nixfmt`, `deadnix`, and `statix`. It also installs the [git-hooks](https://github.com/cachix/git-hooks.nix) hooks, so formatting and linting run when you commit.
 
-Run checks manually:
+Run the checks manually with:
 
 ```bash
 nix flake check
@@ -248,9 +263,9 @@ git checkout -b feat/my-new-template
 
 ## Adding a New Nix Template
 
-1. Create a repository under [nixcafe-develop](https://github.com/nixcafe-develop) with your template files (a standard `flake.nix` + `flake.lock` + any project files)
+1. Create a repository under [nixcafe-develop](https://github.com/nixcafe-develop) with a `flake.nix` and the project files that the template should copy. The existing template repositories do not include a `flake.lock`.
 
-2. Add the repository as a flake input in `flake.nix`:
+2. Add the repository as a flake input in the root `flake.nix`:
 
 ```nix
 templates-<name> = {
@@ -267,43 +282,41 @@ templates-<name> = {
   description = "Description of your template";
   path = "${inputs.templates-<name>}";
   welcomeText = ''
-    # Template Name — Nix Development Environment
+    # Template Name
     Run `nix develop` to enter the dev shell.
   '';
 }
 ```
 
-4. Run checks:
+The directory name under `templates/` becomes the template name. For example, `templates/rust/default.nix` is used with `nix flake init -t beans#rust`.
+
+4. Run the checks:
 
 ```bash
 nix flake check
 ```
 
-5. Open a pull request to the `main` branch.
+5. Open a pull request against `main`.
 
-## CI/CD (GitHub Actions)
+For a template that reads from another flake input instead of a `templates-*` input, follow the approach used by `templates/purr/default.nix` and `templates/purr-flake-parts/default.nix`. Both reference directories under `inputs.purr`.
 
-### On Pull Request
+## CI
 
-Git hooks checks (`nixfmt`, `deadnix`, `statix`) run automatically on all PRs.
+The workflow in `.github/workflows/flake-check.yml` runs `nix flake check` on pull requests to `main`.
 
-### On Push to Main
-
-The Nix flake is automatically published to [FlakeHub](https://flakehub.com) as `nixcafe/develop-templates` with rolling versioning. This ensures flakes consuming these templates are not affected by GitHub API rate limits.
+The workflow in `.github/workflows/flakehub-publish-rolling.yml` publishes each push to `main` to [FlakeHub](https://flakehub.com) as `nixcafe/develop-templates` with rolling versioning.
 
 ## Branch Protection
 
 The `main` branch is protected:
 
-* Pull request reviews are required (at least 1 approval)
-* Status checks must pass before merging
-* Stale reviews are dismissed when new commits are pushed
-
-All development happens on feature branches and is merged to `main` via pull requests.
+* Pull requests require at least one approval.
+* Status checks must pass before merging.
+* New commits dismiss stale reviews.
 
 ## Code Style
 
-* Nix: follow `nixfmt` output
-* No unused bindings (`deadnix`)
-* `statix` lint warnings must be clean
-* `{ ... }:` empty patterns should use `_:` instead (except where the spread is intentional)
+* Nix: follow `nixfmt` output.
+* No unused bindings (`deadnix`).
+* `statix` warnings must be clean.
+* Use `_:` for empty patterns, except where the spread is intentional.

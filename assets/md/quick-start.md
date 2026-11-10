@@ -1,56 +1,48 @@
 # Quick Start
 
-## nix flake init (direct)
+Run `nix flake init` in an empty directory. The template name is the directory name under `templates/` in the `develop-templates` repository.
+
+## Direct flake reference
 
 ```bash
-nix flake init -t "github:nixcafe/develop-templates#${template_name}" --refresh
+nix flake init -t "github:nixcafe/develop-templates#node" --refresh
 ```
 
-## nix registry (recommended)
+Replace `node` with another template name. The `--refresh` flag makes Nix fetch the latest revision of the repository.
 
-Add to your [Nix registry](https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-registry) for shorter commands:
+## Registry alias
+
+Register the repository once in your [Nix registry](https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-registry) to use a shorter reference:
 
 ```bash
 nix registry add beans "github:nixcafe/develop-templates"
-nix flake init -t beans#${template_name}
-```
-
-## With Cattery Modules
-
-If you use [cattery-modules](https://github.com/nixcafe/cattery-modules) for NixOS deployment, the templates are pre-registered:
-
-```bash
-nix flake init -t beans#${template_name}
-```
-
-## Default Template
-
-The default template is `nix` — a Nix development shell with formatting, linting, and dead code detection tools. Used when no template is specified:
-
-```bash
-nix flake init -t beans
-```
-
-## After Initialization
-
-```bash
-nix develop    # Enter the development shell
-```
-
-The `nix develop` command drops you into a fully provisioned dev environment with all tools, dependencies, and pre-commit hooks configured.
-
-## Registry Shortcuts
-
-We recommend registering the alias once:
-
-```bash
-nix registry add beans "github:nixcafe/develop-templates"
-```
-
-This allows shorter commands:
-
-```bash
-nix flake init -t beans#rust
-nix flake init -t beans#python
 nix flake init -t beans#node
+```
+
+After registration, `beans#<name>` can be used anywhere the full `github:nixcafe/develop-templates#<name>` reference is accepted.
+
+## With cattery-modules
+
+If you use [cattery-modules](https://github.com/nixcafe/cattery-modules) and enable its shared Nix module, it registers `beans` in the Nix registry. You can skip `nix registry add` and run:
+
+```bash
+nix flake init -t beans#node
+```
+
+## After initialization
+
+```bash
+nix develop
+```
+
+This starts a shell with the tools listed in the [template table](/templates). Most templates also include a `.envrc`, so `direnv allow` works if direnv is installed.
+
+## Template names
+
+The available names are `nix`, `node`, `python`, `rust`, `java`, `kotlin`, `latex`, `typst`, `nix-config`, `colmena-config`, `secrets`, `purr`, and `purr-flake-parts`.
+
+The flake does not define a `default` template, so `nix flake init -t beans` fails. Pass a name explicitly:
+
+```bash
+nix flake init -t beans#nix
 ```

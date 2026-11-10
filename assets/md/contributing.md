@@ -1,6 +1,6 @@
 # Contributing
 
-This project follows [GitHub Flow](https://docs.github.com/en/get-started/using-github/github-flow). All contributions must be made via pull requests against the `main` branch.
+This project follows [GitHub Flow](https://docs.github.com/en/get-started/using-github/github-flow). Make changes on a feature branch and open a pull request against the `main` branch.
 
 ## Development Shell
 
@@ -10,9 +10,9 @@ cd develop-templates
 nix develop
 ```
 
-The dev shell provides `nixfmt`, `deadnix`, and `statix` with [git-hooks](https://github.com/cachix/git-hooks.nix) enabled. Formatting and linting run automatically on every commit.
+The dev shell provides `nixfmt`, `deadnix`, and `statix`. It also installs the [git-hooks](https://github.com/cachix/git-hooks.nix) hooks, so formatting and linting run when you commit.
 
-Run checks manually:
+Run the checks manually with:
 
 ```bash
 nix flake check
@@ -26,9 +26,9 @@ git checkout -b feat/my-new-template
 
 ## Adding a New Nix Template
 
-1. Create a repository under [nixcafe-develop](https://github.com/nixcafe-develop) with your template files (a standard `flake.nix` + `flake.lock` + any project files)
+1. Create a repository under [nixcafe-develop](https://github.com/nixcafe-develop) with a `flake.nix` and the project files that the template should copy. The existing template repositories do not include a `flake.lock`.
 
-2. Add the repository as a flake input in `flake.nix`:
+2. Add the repository as a flake input in the root `flake.nix`:
 
 ```nix
 templates-<name> = {
@@ -45,43 +45,41 @@ templates-<name> = {
   description = "Description of your template";
   path = "${inputs.templates-<name>}";
   welcomeText = ''
-    # Template Name — Nix Development Environment
+    # Template Name
     Run `nix develop` to enter the dev shell.
   '';
 }
 ```
 
-4. Run checks:
+The directory name under `templates/` becomes the template name. For example, `templates/rust/default.nix` is used with `nix flake init -t beans#rust`.
+
+4. Run the checks:
 
 ```bash
 nix flake check
 ```
 
-5. Open a pull request to the `main` branch.
+5. Open a pull request against `main`.
 
-## CI/CD (GitHub Actions)
+For a template that reads from another flake input instead of a `templates-*` input, follow the approach used by `templates/purr/default.nix` and `templates/purr-flake-parts/default.nix`. Both reference directories under `inputs.purr`.
 
-### On Pull Request
+## CI
 
-Git hooks checks (`nixfmt`, `deadnix`, `statix`) run automatically on all PRs.
+The workflow in `.github/workflows/flake-check.yml` runs `nix flake check` on pull requests to `main`.
 
-### On Push to Main
-
-The Nix flake is automatically published to [FlakeHub](https://flakehub.com) as `nixcafe/develop-templates` with rolling versioning. This ensures flakes consuming these templates are not affected by GitHub API rate limits.
+The workflow in `.github/workflows/flakehub-publish-rolling.yml` publishes each push to `main` to [FlakeHub](https://flakehub.com) as `nixcafe/develop-templates` with rolling versioning.
 
 ## Branch Protection
 
 The `main` branch is protected:
 
-* Pull request reviews are required (at least 1 approval)
-* Status checks must pass before merging
-* Stale reviews are dismissed when new commits are pushed
-
-All development happens on feature branches and is merged to `main` via pull requests.
+* Pull requests require at least one approval.
+* Status checks must pass before merging.
+* New commits dismiss stale reviews.
 
 ## Code Style
 
-* Nix: follow `nixfmt` output
-* No unused bindings (`deadnix`)
-* `statix` lint warnings must be clean
-* `{ ... }:` empty patterns should use `_:` instead (except where the spread is intentional)
+* Nix: follow `nixfmt` output.
+* No unused bindings (`deadnix`).
+* `statix` warnings must be clean.
+* Use `_:` for empty patterns, except where the spread is intentional.

@@ -1,4 +1,4 @@
-var e={accentColor:`#4fc3f7`,baseUrl:`https://templates.nixcafe.org`,basePath:`/`,cacheDir:`/home/runner/work/nixcafe-docs/nixcafe-docs/apps/develop-templates/node_modules/.cache/vocs`,checkDeadlinks:`warn`,codeHighlight:{langAlias:{sol:`solidity`,js:`javascript`,cjs:`javascript`,mjs:`javascript`,md:`markdown`,jade:`pug`,ts:`typescript`,cts:`typescript`,mts:`typescript`,coffeescript:`coffee`,regex:`regexp`,"c++":`cpp`,gql:`graphql`,yml:`yaml`,hbs:`handlebars`,bash:`shellscript`,sh:`shellscript`,shell:`shellscript`,zsh:`shellscript`,py:`python`,jl:`julia`,styl:`stylus`,lit:`ts-tags`,dockerfile:`docker`,protobuf:`proto`,rs:`rust`},langs:[`ansi`,`bash`,`html`,`js`,`json`,`jsx`,`markdown`,`md`,`mdx`,`plaintext`,`rust`,`sol`,`solidity`,`ts`,`tsx`,`zsh`,`nix`,`text`],themes:{light:`github-light`,dark:`github-dark-dimmed`}},colorScheme:`dark`,description:`develop-templates - Nix flake templates for reproducible development environments`,editLink:{text:`Suggest changes to this page`,link:`https://github.com/nixcafe/nixcafe-docs/edit/main/apps/develop-templates/src/pages/:path`},feedback:!1,head:`_vocs-fn_() => ({
+var e={accentColor:`#4fc3f7`,baseUrl:`https://templates.nixcafe.org`,basePath:`/`,cacheDir:`/home/runner/work/nixcafe-docs/nixcafe-docs/apps/develop-templates/node_modules/.cache/vocs`,checkDeadlinks:`warn`,codeHighlight:{langAlias:{sol:`solidity`,js:`javascript`,cjs:`javascript`,mjs:`javascript`,md:`markdown`,jade:`pug`,ts:`typescript`,cts:`typescript`,mts:`typescript`,coffeescript:`coffee`,regex:`regexp`,"c++":`cpp`,gql:`graphql`,yml:`yaml`,hbs:`handlebars`,bash:`shellscript`,sh:`shellscript`,shell:`shellscript`,zsh:`shellscript`,py:`python`,jl:`julia`,styl:`stylus`,lit:`ts-tags`,dockerfile:`docker`,protobuf:`proto`,rs:`rust`},langs:[`ansi`,`bash`,`html`,`js`,`json`,`jsx`,`markdown`,`md`,`mdx`,`plaintext`,`rust`,`sol`,`solidity`,`ts`,`tsx`,`zsh`,`nix`,`text`],themes:{light:`github-light`,dark:`github-dark-dimmed`}},colorScheme:`dark`,description:`templates - Nix flake templates for reproducible development environments`,editLink:{text:`Suggest changes to this page`,link:`https://github.com/nixcafe/nixcafe-docs/edit/main/apps/develop-templates/src/pages/:path`},feedback:!1,head:`_vocs-fn_() => ({
 		meta: {
 			ogType: "website",
 			ogSiteName: "nixcafe",
@@ -18,7 +18,7 @@ var e={accentColor:`#4fc3f7`,baseUrl:`https://templates.nixcafe.org`,basePath:`/
 				"@context": "https://schema.org",
 				"@graph": [{
 					"@type": "SoftwareSourceCode",
-					name: "develop-templates",
+					name: "templates",
 					description: "Nix flake templates for reproducible development environments",
 					url: "https://templates.nixcafe.org",
 					codeRepository: "https://github.com/nixcafe/develop-templates",
@@ -27,9 +27,9 @@ var e={accentColor:`#4fc3f7`,baseUrl:`https://templates.nixcafe.org`,basePath:`/
 					license: "CC0-1.0"
 				}, {
 					"@type": "WebSite",
-					name: "develop-templates",
+					name: "templates",
 					url: "https://templates.nixcafe.org",
-					description: "develop-templates - Nix flake templates documentation"
+					description: "templates - Nix flake templates documentation"
 				}]
 			}
 		}]
@@ -53,4 +53,4 @@ var e={accentColor:`#4fc3f7`,baseUrl:`https://templates.nixcafe.org`,basePath:`/
                     const depthBoost = 1 / Math.max(depth, 1);
                     const docsBoost = isDocsPath ? 1.5 : 1;
                     return priority * depthBoost * docsBoost;
-                }`,combineWith:`AND`,fuzzy:.2,prefix:!0,boost:{title:4,subtitle:3,text:2,category:1,titles:1}},sidebar:[{text:`Introduction`,link:`/`},{text:`Guide`,collapsed:!1,items:[{text:`Quick Start`,link:`/quick-start`},{text:`Available Templates`,link:`/templates`},{text:`Contributing`,link:`/contributing`}]}],socials:[{icon:`github`,link:`https://github.com/nixcafe`}],srcDir:`src`,title:`develop-templates`,titleTemplate:`%s – develop-templates`,trailingSlashRedirect:!0};export{e as t};
+                }`,combineWith:`AND`,fuzzy:.2,prefix:!0,boost:{title:4,subtitle:3,text:2,category:1,titles:1}},sidebar:[{text:`Introduction`,link:`/`},{text:`Guide`,collapsed:!1,items:[{text:`Quick Start`,link:`/quick-start`},{text:`Available Templates`,link:`/templates`},{text:`Contributing`,link:`/contributing`}]}],socials:[{icon:`github`,link:`https://github.com/nixcafe`}],srcDir:`src`,title:`templates`,titleTemplate:`%s – templates`,trailingSlashRedirect:!0};export{e as t};

@@ -1,6 +1,6 @@
-# develop-templates
+# templates
 
-`develop-templates` is a collection of [Nix flake](https://nixos.wiki/wiki/Flakes) templates for development environments. Each template provides a `flake.nix` and the project files needed to start work in an empty directory.
+`templates` is a collection of [Nix flake](https://nixos.wiki/wiki/Flakes) templates for development environments. Each template provides a `flake.nix` and the project files needed to start work in an empty directory.
 
 The flake is published on [FlakeHub](https://flakehub.com/flake/nixcafe/develop-templates).
 
